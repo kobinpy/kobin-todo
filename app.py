@@ -1,12 +1,8 @@
 from kobin import Kobin, template
-import os
+import config
 
 app = Kobin()
-app.config.update({
-    'TEMPLATE_DIRS': [os.path.join(os.path.abspath('.'), 'templates')],
-    'STATICFILES_DIRS': [os.path.join(os.path.abspath('.'), 'static')],
-    'STATIC_ROOT': '/static/',
-})
+app.config.load_from_module(config)
 
 
 @app.route('^/$')
