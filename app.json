@@ -1,0 +1,6 @@
+{
+  "name": "Kobin Example",
+  "description": "Example application in Kobin python web-framework.",
+  "repository": "https://github.com/c-bata/kobin-example",
+  "keywords": ["python", "kobin"],
+}
