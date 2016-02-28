@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block head %}
+    <title>{% block title %}{% endblock %} - Kobin</title>
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    {% endblock %}
+</head>
+<body>
+<header>
+    {% block header %}
+    {% endblock %}
+</header>
+<main>
+    {% block main %}
+    {% endblock %}
+</main>
+<footer>
+    {% block footer %}
+    {% endblock %}
+</footer>
+</body>
+</html>
