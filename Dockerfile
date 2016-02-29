@@ -1,9 +1,11 @@
-FROM centos
+FROM python:3.5-slim
 MAINTAINER Masashi Shibata <contact@c-bata.link>
 
-# RUN: buildする時に実行される
-RUN echo "now building..."
+ADD . /code
+WORKDIR /code
+RUN pip install --upgrade pip setuptools
+RUN pip install -c ./requirements/constraints.txt -r ./requirements/general.txt
 
-# CMD: runする時に実行される
-CMD ["echo", "now running..."]
+EXPOSE 8080
+CMD ["python", "./app.py"]
 
