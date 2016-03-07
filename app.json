@@ -1,6 +1,7 @@
 {
   "name": "Kobin Example",
   "description": "Example application in Kobin python web-framework.",
+  "image": "heroku/python",
   "repository": "https://github.com/c-bata/kobin-example",
   "keywords": ["python", "kobin"],
   "env": {
