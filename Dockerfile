@@ -7,5 +7,5 @@ RUN pip install --upgrade pip setuptools
 RUN pip install -c ./requirements/constraints.txt -r ./requirements/general.txt
 
 EXPOSE 8080
+ENV KOBIN_SETTINGS_FILE=config/docker.py
 CMD ["python", "./app.py"]
-

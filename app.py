@@ -1,8 +1,8 @@
+import os
 from kobin import Kobin, template
-import config
 
 app = Kobin()
-app.config.load_from_module(config)
+app.config.load_from_pyfile(os.environ.get('KOBIN_SETTINGS_FILE', 'config/local.py'))
 
 
 @app.route('^/$')
