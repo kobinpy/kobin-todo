@@ -9,6 +9,10 @@ Example application in Kobin python web-framework.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
+```
+$ heroku config:set KOBIN_SETTINGS_FILE=config/heroku.py
+```
+
 
 ## Docker
 
