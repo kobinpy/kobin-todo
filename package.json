@@ -1,0 +1,31 @@
+{
+  "name": "kobin-example",
+  "version": "0.0.1",
+  "description": "Example application in Kobin python web-framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c-bata/kobin-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/c-bata/kobin-example/issues"
+  },
+  "homepage": "https://github.com/c-bata/kobin-example#readme",
+  "dependencies": {
+    "angular2": "^2.0.0-beta.15",
+    "es6-shim": "^0.35.0",
+    "reflect-metadata": "^0.1.2",
+    "rxjs": "^5.0.0-beta.2",
+    "typescript": "^1.8.10",
+    "zone.js": "^0.6.11"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0"
+  }
+}

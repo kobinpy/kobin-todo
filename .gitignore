@@ -19,3 +19,5 @@ coverage.xml
 ### IntelliJ IDEA
 .idea/
 
+### node
+node_modules/
