@@ -4,7 +4,7 @@
 
 {% block head %}
     {{ super() }}
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
     <base href="/" />
 {% endblock %}
 
@@ -18,10 +18,6 @@
 <div class="container">
     <p>Hello {{ name }}! with Jinja2 template.</p>
     <my-app>Loading...</my-app>
-    <script src="/static/bundle.js"></script>
+    <script src="/static/js/bundle.js"></script>
 </div>
-{% endblock %}
-
-{% block footer %}
-<p style="text-align: center;">Powered by Kobin.</p>
 {% endblock %}

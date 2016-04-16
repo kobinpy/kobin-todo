@@ -12,6 +12,6 @@
     "node_modules"
   ],
   "files": [
-    "./app/index.ts"
+    "./static/ts/main.ts"
   ]
 }

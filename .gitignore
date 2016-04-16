@@ -21,5 +21,6 @@ coverage.xml
 
 ### node
 node_modules/
+public/
+static/ts/*.js
 npm-debug.log
-*.js
