@@ -5,6 +5,7 @@
 {% block head %}
     {{ super() }}
     <link rel="stylesheet" href="/static/style.css">
+    <base href="/" />
 {% endblock %}
 
 {% block header %}
@@ -16,6 +17,8 @@
 {% block main %}
 <div class="container">
     <p>Hello {{ name }}! with Jinja2 template.</p>
+    <my-app>Loading...</my-app>
+    <script src="/static/bundle.js"></script>
 </div>
 {% endblock %}
 
