@@ -25,7 +25,16 @@ export class TaskService{
             .map(this.extractTask)
             .catch(this.handleError);
     }
-    
+
+    updateTask(task: Task): Observable<Task> {
+        let body = JSON.stringify({ task });
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.patch(`api/tasks/${task.id}`, body, options)
+            .map(this.extractTask)
+            .catch(this.handleError)
+    }
+
     private extractTasks(res: Response) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);

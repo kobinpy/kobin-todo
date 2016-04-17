@@ -15,6 +15,7 @@ import {TaskDetailComponent} from './task-detail.component'
         
         <ul>
             <li [class.selected]="task === selectedTask" *ngFor="#task of tasks" (click)="onSelect(task)">
+                <input type="checkbox" (click)="toggleDone(task)" [checked]="task.done">
                 {{task.id}} {{task.title}}
             </li>
         </ul>
@@ -50,6 +51,18 @@ export class TaskListComponent implements OnInit {
         this._taskService.addTask(title)
             .subscribe(
                 task => this.tasks.push(task),
+                error => this.errorMessage = <any>error
+            );
+    }
+
+    toggleDone(task: Task) {
+        task.done = !task.done;
+        this._taskService.updateTask(task)
+            .subscribe(
+                task => {
+                    this.tasks.filter(t => t.id === task.id)
+                        .map(t => t.done = task.done)
+                },
                 error => this.errorMessage = <any>error
             );
     }
