@@ -1,7 +1,7 @@
 import os
 import json
 from kobin import Kobin, template, response, request
-import models
+from . import models, service
 
 app = Kobin()
 app.config.load_from_pyfile(os.environ.get('KOBIN_SETTINGS_FILE', 'config/local.py'))
@@ -22,10 +22,5 @@ def task_list():
 @app.route('^/api/tasks$', method='POST')
 def add_task():
     response.add_header('Content-type', 'application/json')
-    new_task = models.Task(title=request.json['title'])
-    models.session.add(new_task)
-    models.session.commit()
+    new_task = service.add_task(title=request.json['title'])
     return json.dumps(new_task.serialize)
-
-if __name__ == '__main__':
-    app.run()
