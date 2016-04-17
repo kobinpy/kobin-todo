@@ -2,7 +2,8 @@ import {Component, OnInit} from 'angular2/core'
 import {HTTP_PROVIDERS} from 'angular2/http'
 
 import {Task} from './task'
-import {TaskService} from './tasks.service'
+import {TaskService} from './task.service'
+import {TaskDetailComponent} from "./task-detail.component";
 
 @Component({
     selector: 'app-task',
@@ -16,17 +17,25 @@ import {TaskService} from './tasks.service'
         <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
         
         <ul>
-            <li *ngFor="#task of tasks">{{task.id}} {{task.title}}</li>
+            <li [class.selected]="task === selectedTask" *ngFor="#task of tasks" (click)="onSelect(task)">
+                {{task.id}} {{task.title}}
+            </li>
         </ul>
+        <app-task-detail [task]="selectedTask"></app-task-detail>
     `,
+    styles: [
+        `.selected { background-color: #ddd; }`
+    ],
     providers: [
         HTTP_PROVIDERS,
         TaskService,
-    ]
+    ],
+    directives: [TaskDetailComponent],
 })
 export class TaskComponent implements OnInit {
     tasks: Task[];
     errorMessage: string;
+    selectedTask: Task;
     
     constructor(
         private _taskService: TaskService
@@ -53,5 +62,9 @@ export class TaskComponent implements OnInit {
     
     ngOnInit() {
         this.getTasks();
+    }
+    
+    onSelect(task: Task) {
+        this.selectedTask = task;
     }
 }
