@@ -26,14 +26,14 @@ import {TaskDetailComponent} from './task-detail.component'
                 </ul>
             </div>
             <div class="col-sm-8">
-                <app-task-detail [task]="selectedTask"></app-task-detail>
+                <app-task-detail [task]="selectedTask" [tasks]="tasks"></app-task-detail>
             </div>
         </div>
     `,
     providers: [TaskService],
     directives: [TaskDetailComponent],
     styles: [`
-        li { list-style: none; padding: 10px 0; }
+        li { list-style: none; padding: 10px 0 10px 10px; }
         ul { padding-left: 0px; }
         .selected { background-color: #ddd; }
         .task-add { padding: 10px 0; }

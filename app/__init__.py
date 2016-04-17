@@ -14,20 +14,29 @@ def index():
 
 @app.route('^/api/tasks$')
 def task_list():
-    response.add_header('Content-type', 'application/json')
+    response.add_header('Content-Type', 'application/json')
     tasks = [t.serialize for t in models.session.query(models.Task).all()]
     return json.dumps({'tasks': tasks})
 
 
 @app.route('^/api/tasks$', method='POST')
 def add_task():
-    response.add_header('Content-type', 'application/json')
+    response.add_header('Content-Type', 'application/json')
     new_task = service.add_task(title=request.json['title'])
     return json.dumps(new_task.serialize)
 
 
 @app.route('^/api/tasks/(?P<task_id>\d+)$', method='PATCH')
 def modify_task(task_id: int):
-    response.add_header('Content-type', 'application/json')
+    response.add_header('Content-Type', 'application/json')
     updated_task = service.update_task(task_id, request.json['task'])
     return json.dumps(updated_task.serialize)
+
+
+@app.route('^/api/tasks/(?P<task_id>\d+)$', method='DELETE')
+def delete_task(task_id: int):
+    if service.delete_task(task_id):
+        response.status = 204
+    else:
+        response.status = 403
+    return json.dumps({})

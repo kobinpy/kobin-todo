@@ -19,6 +19,7 @@ import {TaskService} from './task.service'
                 This task is done.
             </div>
             <button class="btn btn-default" (click)="updateTask(task)">Update Task</button>
+            <button class="btn btn-danger" (click)="deleteTask(task)">Delete Task</button>
             
             <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
         </div>
@@ -26,6 +27,7 @@ import {TaskService} from './task.service'
 })
 export class TaskDetailComponent {
     @Input() task: Task;
+    @Input() tasks: Task[];
     errorMessage: string;
 
     constructor(
@@ -36,6 +38,18 @@ export class TaskDetailComponent {
         this._taskService.updateTask(task)
             .subscribe(
                 task => this.task = task,
+                error => this.errorMessage = <any>error
+            );
+    }
+
+    deleteTask(task: Task) {
+        let index = this.tasks.indexOf(task);
+        this._taskService.deleteTask(task)
+            .subscribe(
+                res => {
+                    this.tasks.splice(index, 1);
+                    this.task = null;
+                },
                 error => this.errorMessage = <any>error
             );
     }

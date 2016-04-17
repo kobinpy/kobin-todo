@@ -15,3 +15,12 @@ def update_task(task_id: int, new_task: Dict[str, Any]) -> models.Task:
     models.session.add(task)
     models.session.commit()
     return task
+
+
+def delete_task(task_id: int) -> bool:
+    task = models.session.query(models.Task).get(task_id)
+    if task is None:
+        return False
+    models.session.delete(task)
+    models.session.commit()
+    return True

@@ -35,6 +35,14 @@ export class TaskService{
             .catch(this.handleError)
     }
 
+    deleteTask(task: Task): Observable<Response> {
+        let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        return this.http.delete(`api/tasks/${task.id}`, options)
+            .map(res => res)
+            .catch(this.handleError)
+    }
+
     private extractTasks(res: Response) {
         if (res.status < 200 || res.status >= 300) {
             throw new Error('Bad response status: ' + res.status);
