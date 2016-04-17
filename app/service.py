@@ -11,9 +11,7 @@ def add_task(title: str=None) -> models.Task:
 
 def update_task(task_id: int, new_task: Dict[str, Any]) -> models.Task:
     task = models.session.query(models.Task).get(task_id)
-    task.done = new_task['done']
-    task.title = new_task['title']
-    task.detail = new_task['detail']
+    task.update(**new_task)
     models.session.add(task)
     models.session.commit()
     return task

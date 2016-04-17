@@ -18,10 +18,20 @@ class Task(Base):
     title = Column(Unicode(255), nullable=False)
     detail = Column(UnicodeText)
     done = Column(Boolean, nullable=False, default=False)
+    updated_at = Column(DateTime, default=datetime.now(), nullable=False)
     created_at = Column(DateTime, default=datetime.now(), nullable=False)
 
     def __repr__(self):
         return "<Task (title='%s')>" % self.title
+
+    def update(self, title=None, detail=None, done=None):
+        if title:
+            self.title = title
+        if detail:
+            self.detail = detail
+        if done:
+            self.done = done
+        self.updated_at = datetime.now()
 
     @property
     def serialize(self):
@@ -30,7 +40,8 @@ class Task(Base):
             'title': self.title,
             'detail': self.detail,
             'done': self.done,
-            'created_at': self.created_at.strftime('%Y-%m-%d')
+            'updated_at': self.updated_at.strftime('%Y-%m-%d'),
+            'created_at': self.created_at.strftime('%Y-%m-%d'),
         }
 
 Session = sessionmaker()
