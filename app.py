@@ -15,14 +15,14 @@ def index():
 @app.route('^/api/tasks$')
 def task_list():
     response.add_header('Content-type', 'application/json')
-    tasks = [t.serialize() for t in models.session.query(models.Task).all()]
+    tasks = [t.serialize for t in models.session.query(models.Task).all()]
     return json.dumps({'tasks': tasks})
 
 
 @app.route('^/api/tasks$', method='POST')
 def add_task():
     response.add_header('Content-type', 'application/json')
-    new_task = models.Task(title=request.POST['title'].value)
+    new_task = models.Task(title=request.json['title'])
     models.session.add(new_task)
     models.session.commit()
     return json.dumps(new_task.serialize)
