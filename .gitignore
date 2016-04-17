@@ -25,3 +25,7 @@ public/
 static/ts/*.js
 *.js.map
 npm-debug.log
+
+
+### DB
+db.sqlite3
