@@ -1,6 +1,7 @@
 import {Task} from './task'
 import {Injectable} from 'angular2/core'
 import {Http, Response} from 'angular2/http';
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class TaskService{
@@ -10,10 +11,9 @@ export class TaskService{
     
     private _tasksUrl = 'api/tasks';
     
-    getTasks(): Promise<Task[]> {
+    getTasks(): Observable<Task[]> {
         return this.http.get(this._tasksUrl)
-            .toPromise()
-            .then(this.extractData)
+            .map(this.extractData)
             .catch(this.handleError);
     }
     
@@ -28,6 +28,6 @@ export class TaskService{
     private handleError(error: any) {
         let errMsg = error.message || 'Server error';
         console.error(errMsg);
-        return Promise.reject(errMsg);
+        return Observable.throw(errMsg);
     }
 }

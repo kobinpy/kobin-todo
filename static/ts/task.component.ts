@@ -18,7 +18,7 @@ import {TaskService} from './tasks.service'
         TaskService,
     ]
 })
-export class TaskComponent implements OnInit{
+export class TaskComponent implements OnInit {
     tasks: Task[];
     errorMessage: string;
     
@@ -28,7 +28,7 @@ export class TaskComponent implements OnInit{
     
     getTasks() {
         this._taskService.getTasks()
-            .then(
+            .subscribe(
                 tasks => this.tasks = tasks,
                 error => this.errorMessage = <any>error
             );
