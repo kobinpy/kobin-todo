@@ -7,25 +7,37 @@ import {TaskDetailComponent} from './task-detail.component'
 @Component({
     selector: 'app-task-list',
     template: `
-        New Task:
-        <input #newTask />
-        <button (click)="addTask(newTask.value); newTask.value=''">Add Task</button>
+        <div class="task-add form-inline">
+            <div class="form-group">
+                <label>New Task: </label>
+                <input #newTask class="form-control" />
+            </div>
+            <button class="btn btn-default" (click)="addTask(newTask.value); newTask.value=''">Add Task</button>
+        </div>
         
         <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
         
-        <ul>
-            <li [class.selected]="task === selectedTask" *ngFor="#task of tasks" (click)="onSelect(task)">
-                <input type="checkbox" (click)="toggleDone(task)" [checked]="task.done">
-                {{task.id}} {{task.title}}
-            </li>
-        </ul>
-        <app-task-detail [task]="selectedTask"></app-task-detail>
+        <div class="row">
+            <div class="col-sm-4">
+                <ul>
+                    <li [class.selected]="task === selectedTask" *ngFor="#task of tasks" (click)="onSelect(task)">
+                        <input type="checkbox" (click)="toggleDone(task)" [checked]="task.done"> {{task.title}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-sm-8">
+                <app-task-detail [task]="selectedTask"></app-task-detail>
+            </div>
+        </div>
     `,
     providers: [TaskService],
     directives: [TaskDetailComponent],
-    styles: [
-        `.selected { background-color: #ddd; }`
-    ],
+    styles: [`
+        li { list-style: none; padding: 10px 0; }
+        ul { padding-left: 0px; }
+        .selected { background-color: #ddd; }
+        .task-add { padding: 10px 0; }
+    `],
 })
 export class TaskListComponent implements OnInit {
     tasks: Task[];

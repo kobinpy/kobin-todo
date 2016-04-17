@@ -6,18 +6,23 @@ import {TaskService} from './task.service'
     selector: 'app-task-detail',
     template: `
         <div *ngIf="task">
-            <h2>{{task.title}}</h2>
-            <div><label>id: </label>{{task.id}}</div>
             <div>
+                <label>id: </label>
+                {{task.id}}
+            </div>
+            <div class="form-group">
                 <label>title: </label>
-                <input [(ngModel)]="task.title" placeholder="title" />
+                <input [(ngModel)]="task.title" placeholder="title" class="form-control"  />
             </div>
-            <div>
+            <div class="form-group">
                 <label>detail: </label>
-                <input [(ngModel)]="task.detail" placeholder="detail" />
+                <textarea [(ngModel)]="task.detail" placeholder="detail" class="form-control" rows="8" ></textarea>
             </div>
-            <div><label>done: </label>{{task.done}}</div>
-            <button (click)="updateTask(task)">Update Task</button>
+            <div class="form-group">
+                <input type="checkbox" [(ngModel)]="task.done" />
+                This task is done.
+            </div>
+            <button class="btn btn-default" (click)="updateTask(task)">Update Task</button>
             
             <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
         </div>

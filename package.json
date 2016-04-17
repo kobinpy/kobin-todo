@@ -5,9 +5,9 @@
   "scripts": {
     "tsc": "tsc -p .",
     "browserify": "browserify ./static/ts/main.js -o ./public/static/js/bundle.js",
-    "sass": "node-sass --include-path static/scss static/scss/style.scss public/static/css/style.css",
+    "scss": "node-sass --include-path static/scss static/scss/style.scss public/static/css/style.css",
     "collectimg": "cp -r ./static/img/ ./public/static/img",
-    "build": "npm run tsc && npm run browserify && npm run sass && npm run collectimg"
+    "build": "npm run tsc && npm run browserify && npm run scss && npm run collectimg"
   },
   "repository": {
     "type": "git",

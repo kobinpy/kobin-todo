@@ -6,7 +6,6 @@ import {TaskListComponent} from './task-list.component'
 @Component({
     selector: 'app-task',
     template: `
-        <h1>Todo App</h1>
         <app-task-list>Now loading...</app-task-list>
     `,
     providers: [HTTP_PROVIDERS],

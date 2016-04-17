@@ -17,6 +17,10 @@
 {% block main %}
 <div class="container">
     <app-task>Loading...</app-task>
-    <script src="/static/js/bundle.js"></script>
 </div>
+{% endblock %}
+
+{% block extrafooter %}
+{{ super() }}
+<script src="/static/js/bundle.js"></script>
 {% endblock %}
