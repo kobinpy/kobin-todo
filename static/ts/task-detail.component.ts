@@ -6,10 +6,6 @@ import {TaskService} from './task.service'
     selector: 'app-task-detail',
     template: `
         <div *ngIf="task">
-            <div>
-                <label>id: </label>
-                {{task.id}}
-            </div>
             <div class="form-group">
                 <label>title: </label>
                 <input [(ngModel)]="task.title" placeholder="title" class="form-control"  />
