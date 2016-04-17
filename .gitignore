@@ -23,4 +23,5 @@ coverage.xml
 node_modules/
 public/
 static/ts/*.js
+*.js.map
 npm-debug.log
