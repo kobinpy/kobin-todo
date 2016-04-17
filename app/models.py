@@ -25,11 +25,11 @@ class Task(Base):
         return "<Task (title='%s')>" % self.title
 
     def update(self, title=None, detail=None, done=None, **kwargs):
-        if title:
+        if title is not None:
             self.title = title
-        if detail:
+        if detail is not None:
             self.detail = detail
-        if done:
+        if done is not None:
             self.done = done
         self.updated_at = datetime.now()
 
