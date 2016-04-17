@@ -19,6 +19,7 @@ import {TaskDetailComponent} from './task-detail.component'
         
         <div class="row">
             <div class="col-sm-4">
+                <p>Progress: {{ doneTaskLength() }} / {{ tasks.length }}</p>
                 <ul>
                     <li [class.selected]="task === selectedTask" *ngFor="#task of tasks" (click)="onSelect(task)">
                         <input type="checkbox" (click)="toggleDone(task)" [checked]="task.done"> {{task.title}}
@@ -40,7 +41,7 @@ import {TaskDetailComponent} from './task-detail.component'
     `],
 })
 export class TaskListComponent implements OnInit {
-    tasks: Task[];
+    tasks: Task[] = [];
     selectedTask: Task;
     errorMessage: string;
 
@@ -68,6 +69,12 @@ export class TaskListComponent implements OnInit {
                 },
                 error => this.errorMessage = <any>error
             );
+    }
+    
+    doneTaskLength() {
+        return this.tasks
+            .filter(task => task.done)
+            .length
     }
 
     toggleDone(task: Task) {
