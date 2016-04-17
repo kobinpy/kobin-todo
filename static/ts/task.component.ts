@@ -8,9 +8,15 @@ import {TaskService} from './tasks.service'
     selector: 'app-task',
     template: `
         <h1>Todo App</h1>
-        <p>{{errorMessage}}</p>
+        
+        New Task:
+        <input #newTask />
+        <button (click)="addTask(newTask.value); newTask.value=''">Add Task</button>
+        
+        <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+        
         <ul>
-            <li *ngFor="#task of tasks">{{task.id}} {{task.message}}</li>
+            <li *ngFor="#task of tasks">{{task.id}} {{task.title}}</li>
         </ul>
     `,
     providers: [
@@ -32,7 +38,17 @@ export class TaskComponent implements OnInit {
                 tasks => this.tasks = tasks,
                 error => this.errorMessage = <any>error
             );
-        console.log(this.tasks);
+    }
+
+    addTask(title: string) {
+        if (!title) {
+            return;
+        }
+        this._taskService.addTask(title)
+            .subscribe(
+                task => this.tasks.push(task),
+                error => this.errorMessage = <any>error
+            );
     }
     
     ngOnInit() {

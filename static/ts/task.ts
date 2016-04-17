@@ -1,5 +1,6 @@
 export class Task {
     id: number;
-    message: string;
+    title: string;
+    detail: string;
     done: boolean;
 }
