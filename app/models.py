@@ -24,7 +24,7 @@ class Task(Base):
     def __repr__(self):
         return "<Task (title='%s')>" % self.title
 
-    def update(self, title=None, detail=None, done=None):
+    def update(self, title=None, detail=None, done=None, **kwargs):
         if title:
             self.title = title
         if detail:
