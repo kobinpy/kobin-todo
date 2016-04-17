@@ -62,7 +62,10 @@ export class TaskListComponent implements OnInit {
         }
         this._taskService.addTask(title)
             .subscribe(
-                task => this.tasks.push(task),
+                task => {
+                    this.tasks.push(task);
+                    this.selectedTask = task;
+                },
                 error => this.errorMessage = <any>error
             );
     }
