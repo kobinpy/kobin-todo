@@ -1,6 +1,6 @@
 import {Component, OnInit} from 'angular2/core';
 
-import {Task} from './task'
+import {Task} from './task.model'
 import {TaskService} from "./task.service";
 import {TaskDetailComponent} from './task-detail.component'
 

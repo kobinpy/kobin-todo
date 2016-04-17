@@ -1,5 +1,5 @@
 import {Component, Input} from 'angular2/core'
-import {Task} from './task'
+import {Task} from './task.model'
 
 @Component({
     selector: 'app-task-detail',
