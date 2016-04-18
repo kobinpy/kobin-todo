@@ -15,7 +15,11 @@ import {TaskDetailComponent} from './task-detail.component'
             <button class="btn btn-default" (click)="addTask(newTask.value); newTask.value=''">Add Task</button>
         </div>
         
-        <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error: </span>
+            {{errorMessage}}
+        </div>
         
         <div class="row">
             <div class="col-sm-4">

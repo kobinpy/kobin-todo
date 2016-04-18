@@ -18,10 +18,16 @@ import {TaskService} from './task.service'
                 <input type="checkbox" [(ngModel)]="task.done" />
                 This task is done.
             </div>
-            <button class="btn btn-default" (click)="updateTask(task)">Update Task</button>
-            <button class="btn btn-danger" (click)="deleteTask(task)">Delete Task</button>
+            <div class="form-group">
+                <button class="btn btn-default" (click)="updateTask(task)">Update Task</button>
+                <button class="btn btn-danger" (click)="deleteTask(task)">Delete Task</button>
+            </div>
             
-            <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error: </span>
+                {{errorMessage}}
+            </div>
         </div>
     `,
 })
