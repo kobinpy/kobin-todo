@@ -9,8 +9,12 @@ def add_task(title: str=None) -> models.Task:
     return new_task
 
 
+def get_task(task_id) -> models.Task:
+    return models.session.query(models.Task).get(task_id)
+
+
 def update_task(task_id: int, new_task: Dict[str, Any]) -> models.Task:
-    task = models.session.query(models.Task).get(task_id)
+    task = get_task(task_id)
     task.update(**new_task)
     models.session.add(task)
     models.session.commit()
@@ -18,7 +22,7 @@ def update_task(task_id: int, new_task: Dict[str, Any]) -> models.Task:
 
 
 def delete_task(task_id: int) -> bool:
-    task = models.session.query(models.Task).get(task_id)
+    task = get_task(task_id)
     if task is None:
         return False
     models.session.delete(task)
