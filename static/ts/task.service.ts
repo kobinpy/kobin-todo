@@ -4,13 +4,16 @@ import {Http, Response, Headers, RequestOptions} from 'angular2/http';
 import {Observable} from "rxjs/Observable";
 
 @Injectable()
-export class TaskService{
+export class TaskService {
     constructor(
         private http: Http
     ) { }
     
     private _tasksUrl = 'api/tasks';
-    
+    private defaultRequestOptions: RequestOptions = new RequestOptions({
+        headers: new Headers({ 'Content-Type': 'application/json' }),
+    });
+
     getTasks(): Observable<Task[]> {
         return this.http.get(this._tasksUrl)
             .map(this.extractTasks)
@@ -19,26 +22,20 @@ export class TaskService{
 
     addTask(title: string): Observable<Task> {
         let body = JSON.stringify({ title });
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-        return this.http.post(this._tasksUrl, body, options)
+        return this.http.post(this._tasksUrl, body, this.defaultRequestOptions)
             .map(this.extractTask)
             .catch(this.handleError);
     }
 
     updateTask(task: Task): Observable<Task> {
         let body = JSON.stringify({ task });
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-        return this.http.patch(`api/tasks/${task.id}`, body, options)
+        return this.http.patch(`api/tasks/${task.id}`, body, this.defaultRequestOptions)
             .map(this.extractTask)
             .catch(this.handleError)
     }
 
     deleteTask(task: Task): Observable<Response> {
-        let headers = new Headers({ 'Content-Type': 'application/json' });
-        let options = new RequestOptions({ headers: headers });
-        return this.http.delete(`api/tasks/${task.id}`, options)
+        return this.http.delete(`api/tasks/${task.id}`, this.defaultRequestOptions)
             .map(res => res)
             .catch(this.handleError)
     }
