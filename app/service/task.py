@@ -1,4 +1,4 @@
-from . import models
+from app import models
 from typing import Dict, Any
 
 

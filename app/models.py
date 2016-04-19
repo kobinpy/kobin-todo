@@ -44,6 +44,12 @@ class Task(Base):
             'created_at': self.created_at.strftime('%Y-%m-%d'),
         }
 
+
+class User(Base):
+    __tablename__ = 'users'
+    id = Column(Integer, primary_key=True)
+    name = Column(Unicode(255), nullable=False)
+
 Session = sessionmaker()
 Session.configure(bind=engine)
 Base.metadata.create_all(engine)
