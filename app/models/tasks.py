@@ -1,15 +1,9 @@
 from datetime import datetime
-
 from sqlalchemy import (
     Column, Integer, Unicode, UnicodeText, Boolean, DateTime,
-    create_engine
 )
-from sqlalchemy.ext import declarative
-from sqlalchemy.orm import sessionmaker
 
-
-Base = declarative.declarative_base()
-engine = create_engine('sqlite:///db.sqlite3', echo=True)
+from . import Base
 
 
 class Task(Base):
@@ -43,15 +37,3 @@ class Task(Base):
             'updated_at': self.updated_at.strftime('%Y-%m-%d'),
             'created_at': self.created_at.strftime('%Y-%m-%d'),
         }
-
-
-class User(Base):
-    __tablename__ = 'users'
-    id = Column(Integer, primary_key=True)
-    name = Column(Unicode(255), nullable=False)
-
-Session = sessionmaker()
-Session.configure(bind=engine)
-Base.metadata.create_all(engine)
-
-session = Session()

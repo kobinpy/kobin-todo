@@ -13,6 +13,6 @@ def github_oauth_callback():
     access_token = github_service.get_access_token(payload)
     user = github_service.get_user(access_token)
 
-    r = app.config.get('redis')
+    r = app.config.get('REDIS')
     r.set('access_token_{id}'.format(id=user["id"]), access_token)
     return redirect('/')
