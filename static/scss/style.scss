@@ -1,4 +1,4 @@
-header {
+#sidebar {
     position: fixed;
     width: 300px;
     top: 0;
@@ -7,16 +7,16 @@ header {
 
     color: #eee;
     background-color: #389adc;
-    padding: 10px;
 
-    .top {
+    header {
         position: absolute;
         left: 0;
         top: 0;
         width: 100%;
+        padding: 10px;
     }
 
-    .bottom {
+    footer {
         position: absolute;
         left: 0;
         bottom: 0;
@@ -35,6 +35,5 @@ header {
 }
 
 main {
-    padding: 20px;
     margin-left: 300px;
 }

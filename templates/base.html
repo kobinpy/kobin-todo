@@ -9,8 +9,17 @@
     {% endblock %}
 </head>
 <body>
-{% block body %}
-{% endblock %}
+<div id="sidebar">
+    <header>
+        {% block header %}{% endblock %}
+    </header>
+    <footer>
+        {% block footer %}{% endblock %}
+    </footer>
+</div>
+<main>
+{% block main %}{% endblock %}
+</main>
 {% block extrafooter %}
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 {% endblock %}

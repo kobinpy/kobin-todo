@@ -1,5 +1,5 @@
 ### Python template
-
+*.pyc
 __pycache__/
 
 # Installer logs

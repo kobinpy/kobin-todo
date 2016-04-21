@@ -9,13 +9,16 @@
 {% endblock %}
 
 {% block header %}
-<div class="container">
-    <h1 style="color: #eeeeee">Kobin TODO</h1>
-</div>
+    <img class="logo" src="/static/img/kobin.png">
+    <a class="btn btn-default" href="https://github.com/login/oauth/authorize?client_id=9fbe39b8584d366afd85">Github OAuth</a>
 {% endblock %}
 
-{% block body %}
-<app-task>Loading...</app-task>
+{% block main %}
+    <app-task>Loading...</app-task>
+{% endblock %}
+
+{% block footer %}
+    <p>Powered by Kobin</p>
 {% endblock %}
 
 {% block extrafooter %}
