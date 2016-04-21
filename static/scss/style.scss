@@ -1,25 +1,40 @@
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    margin:0;
-}
-
 header {
-    background-color: #3D90AB;
-    padding: 0 10px;
+    position: fixed;
+    width: 300px;
+    top: 0;
+    left: 0;
+    height: 100%;
+
+    color: #eee;
+    background-color: #389adc;
+    padding: 10px;
+
+    .top {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .bottom {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+
+        p {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    }
+
+    .logo {
+        width: 100%;
+        padding: 30px;
+    }
 }
 
 main {
-    flex: 1;
-}
-
-footer {
-    margin: 30px 0;
-}
-
-.container {
-    max-width: 980px;
-    width: 100%;
-    margin: 0 auto;
+    padding: 20px;
+    margin-left: 300px;
 }

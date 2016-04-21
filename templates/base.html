@@ -9,19 +9,8 @@
     {% endblock %}
 </head>
 <body>
-<header>
-    {% block header %}
-    {% endblock %}
-</header>
-<main>
-    {% block main %}
-    {% endblock %}
-</main>
-<footer>
-    {% block footer %}
-    <p style="text-align: center;">Powered by Kobin.</p>
-    {% endblock %}
-</footer>
+{% block body %}
+{% endblock %}
 {% block extrafooter %}
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 {% endblock %}
