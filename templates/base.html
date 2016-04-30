@@ -4,21 +4,15 @@
     <meta charset="UTF-8">
     {% block head %}
     <title>{% block title %}{% endblock %} - Kobin</title>
-    <link rel="shortcut icon" href="/static/favicon.ico">
+    <link rel="shortcut icon" href="/static/img/favicon.ico">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     {% endblock %}
 </head>
 <body>
-<header>
-    {% block header %}
-    {% endblock %}
-</header>
-<main>
-    {% block main %}
-    {% endblock %}
-</main>
-<footer>
-    {% block footer %}
-    {% endblock %}
-</footer>
+{% block body %}
+{% endblock %}
+{% block extrafooter %}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+{% endblock %}
 </body>
 </html>

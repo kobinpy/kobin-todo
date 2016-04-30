@@ -1,24 +1,24 @@
 {% extends "base" %}
 
-{% block title %}Hello!{% endblock %}
+{% block title %}Kobin TODO{% endblock %}
 
 {% block head %}
     {{ super() }}
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <base href="/" />
 {% endblock %}
 
 {% block header %}
 <div class="container">
-    <h1 style="color: #eeeeee">Kobin is a small and statically-typed web framework.</h1>
+    <h1 style="color: #eeeeee">Kobin TODO</h1>
 </div>
 {% endblock %}
 
-{% block main %}
-<div class="container">
-    <p>Hello {{ name }}! with Jinja2 template.</p>
-</div>
+{% block body %}
+<app-task>Loading...</app-task>
 {% endblock %}
 
-{% block footer %}
-<p style="text-align: center;">Powered by Kobin.</p>
+{% block extrafooter %}
+{{ super() }}
+<script src="/static/js/bundle.js"></script>
 {% endblock %}

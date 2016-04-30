@@ -19,3 +19,13 @@ coverage.xml
 ### IntelliJ IDEA
 .idea/
 
+### node
+node_modules/
+public/
+static/ts/*.js
+*.js.map
+npm-debug.log
+
+
+### DB
+db.sqlite3
