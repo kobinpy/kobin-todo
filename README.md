@@ -2,6 +2,8 @@
 
 Example application in Kobin python web-framework.
 
+![animation](./anim.gif)
+
 
 ## Heroku
 
