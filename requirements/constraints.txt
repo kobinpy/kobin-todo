@@ -1,7 +1,7 @@
 flake8==2.5.4
 gunicorn==19.4.5
 Jinja2==2.8
--e git+http://github.com/c-bata/kobin.git@49695899e32fcf8276090a11e7d73c3b8d4f108b#egg=kobin
+-e git+http://github.com/c-bata/kobin.git#egg=kobin
 MarkupSafe==0.23
 mccabe==0.4.0
 pep8==1.7.0
