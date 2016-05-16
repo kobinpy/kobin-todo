@@ -8,21 +8,21 @@ import {TaskDetailComponent} from './task-detail.component'
     selector: 'app-task-list',
     template: `
         <header>
-            <div class="top">
-                <img class="logo" src="/static/img/kobin.png">
-                <div class="task-add form-inline">
-                    <div class="form-group">
-                        <input #newTask class="form-control" />
-                    </div>
-                    <button class="btn btn-default" (click)="addTask(newTask.value); newTask.value=''">ADD</button>
+            <img class="logo" src="/static/img/kobin.png">
+            <div class="task-add form-inline">
+                <div class="form-group">
+                    <input #newTask class="form-control" />
                 </div>
-                
-                <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                    <span class="sr-only">Error: </span>
-                    {{errorMessage}}
-                </div>
+                <button class="btn btn-default" (click)="addTask(newTask.value); newTask.value=''">ADD</button>
+            </div>
             
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                <span class="sr-only">Error: </span>
+                {{errorMessage}}
+            </div>
+            
+            <div class="task-titles">
                 <ul>
                     <li [class.selected]="task === selectedTask" *ngFor="#task of tasks" (click)="onSelect(task)">
                         <input type="checkbox" (click)="toggleDone(task)" [checked]="task.done"> {{task.title}}
