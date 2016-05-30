@@ -7,11 +7,13 @@ from app import app
 
 @click.group()
 def cli():
+    """This is a management script for the kobin-todo application."""
     pass
 
 
 @click.command()
 def migrate():
+    """Runs database migrations."""
     metadata = app.config["DB"].get("METADATA")
     engine = app.config["DB"].get("ENGINE")
     metadata.create_all(engine)
@@ -19,6 +21,7 @@ def migrate():
 
 @cli.command()
 def run():
+    """Runs server."""
     app.run()
 
 

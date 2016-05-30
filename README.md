@@ -5,6 +5,24 @@ Example application in Kobin python web-framework.
 ![animation](./anim.gif)
 
 
+## How to run
+
+```
+$ python manage.py --help
+Usage: manage.py [OPTIONS] COMMAND [ARGS]...
+
+  This is a management script for the kobin-todo application.
+
+Options:
+  --help  Show this message and exit.
+
+Commands:
+  lint  Runs code linter.
+  run   Runs server.
+  test  Runs unit tests.
+```
+
+
 ## Heroku
 
 - https://kobin.herokuapp.com
