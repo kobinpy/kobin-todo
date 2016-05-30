@@ -1,25 +1,42 @@
-header {
+.sidebar {
     position: fixed;
     width: 300px;
     top: 0;
     left: 0;
     height: 100%;
-    overflow-y: auto;
 
     color: #eee;
     background-color: #389adc;
-    padding: 10px;
 
-    .bottom {
+    .task-titles {
+        height: calc(100% - 170px - 130px);
+        overflow-y: auto;
+        margin-top: 170px;
+        padding: 10px;
+    }
+
+    .sidebar-top {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+
+        .logo {
+            width: 100%;
+            padding: 30px;
+        }
+    }
+
+    footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+
         p {
             text-align: center;
             margin-bottom: 10px;
         }
-    }
-
-    .logo {
-        width: 100%;
-        padding: 30px;
     }
 }
 

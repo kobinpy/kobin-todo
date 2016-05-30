@@ -7,34 +7,38 @@ import {TaskDetailComponent} from './task-detail.component'
 @Component({
     selector: 'app-task-list',
     template: `
-        <header>
-            <img class="logo" src="/static/img/kobin.png">
-            <div class="task-add form-inline">
-                <div class="form-group">
-                    <input #newTask class="form-control" />
-                </div>
-                <button class="btn btn-default" (click)="addTask(newTask.value); newTask.value=''">ADD</button>
+        <div class="sidebar">
+            <div class="sidebar-top">
+                <header>
+                    <img class="logo" src="/static/img/kobin.png">
+                </header>
+                <section class="task-add">
+                    <div class="form-inline">
+                        <div class="form-group">
+                            <input #newTask class="form-control" />
+                        </div>
+                        <button class="btn btn-default" (click)="addTask(newTask.value); newTask.value=''">ADD</button>
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error: </span>
+                        {{errorMessage}}
+                    </div>
+                </section>
             </div>
-            
-            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                <span class="sr-only">Error: </span>
-                {{errorMessage}}
-            </div>
-            
-            <div class="task-titles">
+            <section class="task-titles">
                 <ul>
                     <li [class.selected]="task === selectedTask" *ngFor="#task of tasks" (click)="onSelect(task)">
                         <input type="checkbox" (click)="toggleDone(task)" [checked]="task.done"> {{task.title}}
                     </li>
                 </ul>
-            </div>
-            <div class="bottom">
+            </section>
+            <footer>
                 <a href="https://github.com/login/oauth/authorize?client_id=9fbe39b8584d366afd85">Github Auth</a>
                 <p>Progress: {{ doneTaskLength() }} / {{ tasks.length }}</p>
                 <p>Powered by Kobin</p>
-            </div>
-        </header>
+            </footer>
+        </div>
         
         <main>
             <app-task-detail [task]="selectedTask" [tasks]="tasks"></app-task-detail>
