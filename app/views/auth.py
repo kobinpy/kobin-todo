@@ -1,4 +1,4 @@
-from kobin import request, redirect
+from kobin import request, redirect, response
 from .. import app
 from ..service import github as github_service
 
@@ -15,4 +15,5 @@ def github_oauth_callback():
 
     r = app.config.get('REDIS')
     r.set('access_token_{id}'.format(id=user["id"]), access_token)
+    response.cookies.add("session_id", "access_token_{id}".format(id=user['id']))
     return redirect('/')

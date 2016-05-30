@@ -1,6 +1,7 @@
 ### Python template
 
 __pycache__/
+venv/
 
 # Installer logs
 pip-log.txt
