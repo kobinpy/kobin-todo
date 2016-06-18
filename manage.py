@@ -11,7 +11,7 @@ def cli():
     pass
 
 
-@click.command()
+@cli.command()
 def migrate():
     """Runs database migrations."""
     metadata = app.config["DB"].get("METADATA")
