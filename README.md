@@ -7,19 +7,27 @@ Example application in Kobin python web-framework.
 
 ## How to run
 
+#### Compile TypeScript and SCSS
+
 ```
-$ python manage.py --help
-Usage: manage.py [OPTIONS] COMMAND [ARGS]...
+$ mkdir -p public/static/js
+$ npm install
+$ npm run build
+```
 
-  This is a management script for the kobin-todo application.
+#### Setup python interpreter
 
-Options:
-  --help  Show this message and exit.
+```
+$ python3 -m venv venv
+$ source venv/bin/activate
+$ pip install -r requirements.txt
+$ python manage.py migrate
+```
 
-Commands:
-  lint  Runs code linter.
-  run   Runs server.
-  test  Runs unit tests.
+#### Run
+
+```
+$ python manage.py run
 ```
 
 
