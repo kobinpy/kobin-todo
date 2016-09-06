@@ -33,6 +33,8 @@ $ python manage.py run
 
 ## Heroku
 
+**NOW, this cannot work in Heroku. Help wanted.**
+
 - https://kobin.herokuapp.com
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
@@ -43,6 +45,8 @@ $ heroku config:set KOBIN_SETTINGS_FILE=config/heroku.py
 
 
 ## Docker
+
+**NOW, this cannot work in Docker. Help wanted.**
 
 ```
 $ docker build -t c-bata/kobin .
