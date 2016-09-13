@@ -4,4 +4,5 @@ gunicorn
 requests
 redis
 SQLAlchemy
+beaker
 click
