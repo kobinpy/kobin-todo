@@ -5,6 +5,3 @@ requests
 redis
 SQLAlchemy
 beaker
-click
-wsgicli
-wsgi_static_middleware

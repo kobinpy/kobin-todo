@@ -1,2 +1,5 @@
 flake8
 coverage
+click
+wsgicli
+wsgi_static_middleware
