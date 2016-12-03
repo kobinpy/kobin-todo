@@ -3,3 +3,4 @@ coverage
 click
 wsgicli
 wsgi_static_middleware
+ipython
