@@ -1,5 +1,4 @@
 import click
-import os
 import subprocess
 import sys
 
@@ -23,14 +22,16 @@ def migrate():
 @cli.command()
 def run():
     """Runs server."""
-    from wsgiref.simple_server import make_server
-    from wsgi_static_middleware import StaticMiddleware
-    click.secho('Start: 127.0.0.1:8000', fg='green')
-    base_dir = os.path.dirname(os.path.abspath(__name__))
-    static_dir = os.path.join(base_dir, 'public/static')
-    wrapped_app = StaticMiddleware(app, static_root='/static/', static_dirs=[static_dir])
-    httpd = make_server('', 8000, wrapped_app)
-    httpd.serve_forever()
+    subprocess.call(['wsgicli', 'run', 'app/__init__.py', 'app',
+                     '-p', '8000', '--reload',
+                     '--static', '--static-root', '/static/',
+                     '--static-dirs', './public/static/'])
+
+
+@cli.command()
+def shell():
+    """Run shell"""
+    subprocess.call(['wsgicli', 'shell', 'app'])
 
 
 @cli.command()
