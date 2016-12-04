@@ -1,5 +1,5 @@
 import os
-from kobin import Kobin, template
+from kobin import Kobin, TemplateResponse
 from . import models, views
 
 app = Kobin()
@@ -10,6 +10,6 @@ models.setup_redis(app)
 views.setup_routing(app)
 
 
-@app.route('^/$')
+@app.route('/')
 def index():
-    return template('index')
+    return TemplateResponse('index.html')

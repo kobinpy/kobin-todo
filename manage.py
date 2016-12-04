@@ -1,6 +1,6 @@
+import click
 import subprocess
 import sys
-import click
 
 from app import app
 
@@ -22,7 +22,16 @@ def migrate():
 @cli.command()
 def run():
     """Runs server."""
-    app.run()
+    subprocess.call(['wsgicli', 'run', 'app/__init__.py', 'app',
+                     '-p', '8000', '--reload',
+                     '--static', '--static-root', '/static/',
+                     '--static-dirs', './public/static/'])
+
+
+@cli.command()
+def shell():
+    """Run shell"""
+    subprocess.call(['wsgicli', 'shell', 'app', '-i', 'ipython'])
 
 
 @cli.command()

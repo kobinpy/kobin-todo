@@ -5,4 +5,3 @@ requests
 redis
 SQLAlchemy
 beaker
-click
