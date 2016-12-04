@@ -15,7 +15,7 @@ def get_access_token(payload: Dict[str, str]):
     res = requests.post('https://github.com/login/oauth/access_token',
                         data=json.dumps(payload), headers=headers)
     if res.status_code != 200:
-        raise HTTPError(500, "Github authentication error")
+        raise HTTPError("Github authentication error", 500)
     res_params = {k: v for k, v in
                   [p.split('=') for p in res.text.split('&')]}
     return res_params['access_token']
