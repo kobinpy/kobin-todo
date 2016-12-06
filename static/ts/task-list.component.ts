@@ -32,7 +32,6 @@ import {TaskDetailComponent} from './task-detail.component'
                 </ul>
             </section>
             <footer>
-                <a href="https://github.com/login/oauth/authorize?client_id=9fbe39b8584d366afd85">Github Auth</a>
                 <p>Progress: {{ doneTaskLength() }} / {{ tasks.length }}</p>
                 <p>Powered by Kobin</p>
             </footer>
