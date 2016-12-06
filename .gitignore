@@ -27,6 +27,8 @@ static/ts/*.js
 *.js.map
 npm-debug.log
 
+### Scss
+.sass-cache
 
 ### DB
 db.sqlite3

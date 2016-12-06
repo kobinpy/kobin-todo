@@ -12,12 +12,10 @@ import {TaskDetailComponent} from './task-detail.component'
                 <header>
                     <img class="logo" src="/static/img/kobin.png">
                 </header>
-                <section class="task-add">
-                    <div class="form-inline">
-                        <div class="form-group">
-                            <input #newTask class="form-control" />
-                        </div>
-                        <button class="btn btn-default" (click)="addTask(newTask.value); newTask.value=''">ADD</button>
+                <section>
+                    <div class="task-add form-inline">
+                        <input class="form-control task-add-input" #newTask />
+                        <button class="btn task-add-btn" (click)="addTask(newTask.value); newTask.value=''">Add</button>
                     </div>
                     <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
                         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -50,7 +48,26 @@ import {TaskDetailComponent} from './task-detail.component'
         li { list-style: none; padding: 10px 0 10px 20px; }
         ul { padding-left: 0px; }
         .selected { background-color: #2980b9; }
-        .task-add { padding: 10px 10px 10px 20px; }
+        .task-add { padding: 10px 20px 10px 20px; }
+        .task-add {
+            display: flex;
+            display: -webkit-flex;
+            flex-flow: row nowrap;
+        }
+        .task-add-input {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: #ddd;
+            border-width: 2px;
+            color: #fff;
+            border-radius: 0px;
+            flex-grow: 3;
+            margin-right: 4px;
+        }
+        .task-add-btn {
+            background: #eee;
+            color: rgba(0, 0, 0, 0.7);
+            border-radius: 0px;
+        }
     `],
 })
 export class TaskListComponent implements OnInit {
