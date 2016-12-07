@@ -23,7 +23,7 @@ def migrate():
 def run():
     """Runs server."""
     subprocess.call(['wsgicli', 'run', 'app/__init__.py', 'app',
-                     '-p', '8000', '--reload',
+                     '-p', '8080', '--reload',
                      '--static', '--static-root', '/static/',
                      '--static-dirs', './public/static/'])
 
