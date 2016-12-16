@@ -6,20 +6,25 @@ from kobin import request, HTTPError
 from .. import app, models
 
 
-def create_user(nickname: str, name: str, auth_service: str, avatar_url: str,
-                auth_service_id: int, email: str) -> models.User:
-    new_user = models.User(
-        nickname=nickname,
-        name=name,
-        avatar_url=avatar_url,
-        auth_service=auth_service,
-        auth_service_id=auth_service_id,
-        email=email,
-    )
+def get_or_create_user(nickname: str, name: str, auth_service: str, avatar_url: str,
+                       auth_service_id: int, email: str) -> models.User:
     session = app.config["DB"]["SESSION"]
-    session.add(new_user)
+    user = session.query(models.User).filter_by(
+        auth_service=auth_service, auth_service_id=auth_service_id
+    ).first()
+
+    if user is None:
+        user = models.User(
+            nickname=nickname,
+            name=name,
+            avatar_url=avatar_url,
+            auth_service=auth_service,
+            auth_service_id=auth_service_id,
+            email=email,
+        )
+    session.add(user)
     session.commit()
-    return new_user
+    return user
 
 
 def current_user() -> models.User:

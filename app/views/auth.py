@@ -14,7 +14,7 @@ def github_oauth_callback():
     }
     access_token = github_service.get_access_token(payload)
     user_info = github_service.get_github_user_info(access_token)
-    user = github_service.create_user(
+    user = github_service.get_or_create_user(
         nickname=user_info['login'],
         name=user_info['name'],
         avatar_url=user_info['avatar_url'],
