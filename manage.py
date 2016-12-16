@@ -31,7 +31,7 @@ def run():
 @cli.command()
 def shell():
     """Run shell"""
-    subprocess.call(['wsgicli', 'shell', 'app', '-i', 'ipython'])
+    subprocess.call(['wsgicli', 'shell', 'manage.py', 'app', '-i', '--models', 'ipython'])
 
 
 @cli.command()
