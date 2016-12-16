@@ -41,6 +41,38 @@
     }
 }
 
+.top-container {
+  width: 50%;
+  margin: 200px auto;
+  padding: 100px 10px;
+  background: #4990E2;
+
+  display: flex;
+  display: -webkit-flex;
+
+  flex-direction:         column;
+  -webkit-flex-direction: column;
+  justify-content: center;
+  -webkit-justify-content: center;
+
+  .top-logo {
+    width: 50%;
+    margin: 50px auto;
+
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+  }
+
+  .top-oauth-link {
+    text-align: center;
+    font-size: 20px;
+    color: #EFEFEF;
+    font-weight: lighter;
+  }
+}
+
 main {
     padding: 20px;
     margin-left: 300px;
