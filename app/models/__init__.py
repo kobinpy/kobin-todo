@@ -5,6 +5,7 @@ from sqlalchemy.ext import declarative
 from sqlalchemy.orm import sessionmaker
 
 Base = declarative.declarative_base()
+from .users import User
 from .tasks import Task
 
 

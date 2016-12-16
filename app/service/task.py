@@ -1,9 +1,15 @@
 from typing import Dict, Any
+from kobin import HTTPError
 from .. import app, models
+from ..service import github as github_service
 
 
 def add_task(title: str=None) -> models.Task:
-    new_task = models.Task(title=title)
+    user = github_service.current_user()
+    if user is None:
+        raise HTTPError(body='You are not logged in.', status=401)
+
+    new_task = models.Task(title=title, user_id=user.id)
     session = app.config["DB"]["SESSION"]
     session.add(new_task)
     session.commit()

@@ -34,6 +34,7 @@ import {TaskDetailComponent} from './task-detail.component'
             <footer>
                 <p>Progress: {{ doneTaskLength() }} / {{ tasks.length }}</p>
                 <p>Powered by Kobin</p>
+                <a href="/logout">Logout</a>
             </footer>
         </div>
         

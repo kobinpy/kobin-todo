@@ -34,9 +34,46 @@
         width: 100%;
         height: 100px;
 
-        p {
-            text-align: center;
-            margin-bottom: 10px;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction:         column;
+        -webkit-flex-direction: column;
+        align-items: center;
+        -webkit-align-items: center;
+
+        a {
+            color: #ddd;
+        }
+    }
+}
+
+html, body {
+    height: 100%;
+
+    .top-container {
+        width: 100%;
+        height: 100%;
+        background: #4990E2;
+
+        display: flex;
+        display: -webkit-flex;
+
+        flex-direction:         column;
+        -webkit-flex-direction: column;
+        justify-content: center;
+        -webkit-justify-content: center;
+        align-items: center;
+        -webkit-align-items: center;
+
+        .top-logo {
+            width: 300px;
+            margin: 50px auto;
+        }
+
+        .top-oauth-link {
+            font-size: 20px;
+            color: #EFEFEF;
+            font-weight: lighter;
         }
     }
 }
