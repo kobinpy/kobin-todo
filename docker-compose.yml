@@ -3,4 +3,3 @@ redis:
   container_name: kobin_redis
   ports:
    - "6379:6379"
-
