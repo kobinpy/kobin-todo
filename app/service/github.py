@@ -1,10 +1,34 @@
 import requests
 import json
 from typing import Dict
-from kobin import HTTPError
+from kobin import request, HTTPError
+
+from .. import app, models
 
 
-def get_user(access_token: str):
+def create_user(nickname: str, name: str, auth_service: str, avatar_url: str,
+                auth_service_id: int, email: str) -> models.User:
+    new_user = models.User(
+        nickname=nickname,
+        name=name,
+        avatar_url=avatar_url,
+        auth_service=auth_service,
+        auth_service_id=auth_service_id,
+        email=email,
+    )
+    session = app.config["DB"]["SESSION"]
+    session.add(new_user)
+    session.commit()
+    return new_user
+
+
+def current_user() -> models.User:
+    user_id = int(request.environ['kobin.user'].split('_')[-1])
+    session = app.config["DB"]["SESSION"]
+    return session.query(models.User).get(user_id)
+
+
+def get_github_user_info(access_token: str) -> Dict:
     url = "https://api.github.com/user?access_token={token}".format(token=access_token)
     res = requests.get(url)
     return res.json()
