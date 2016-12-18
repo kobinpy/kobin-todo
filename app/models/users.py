@@ -14,7 +14,7 @@ class User(Base):
     email = Column(Unicode(255), nullable=False)
     avatar_url = Column(Unicode(512), nullable=False)
     auth_service = Column(Unicode(16))  # Now, Support only github.
-    auth_service_id = Column(Unicode(255), nullable=False)
+    auth_service_id = Column(Integer, nullable=False)
     updated_at = Column(DateTime, default=datetime.now(), nullable=False)
     created_at = Column(DateTime, default=datetime.now(), nullable=False)
 

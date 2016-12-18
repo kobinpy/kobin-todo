@@ -1,5 +1,5 @@
 def setup_routing(app):
-    from kobin import TemplateResponse, request
+    from kobin import TemplateResponse, request, HTTPError
     from . import tasks
     from . import auth
 
@@ -18,10 +18,17 @@ def setup_routing(app):
     def index():
         if request.environ.get('kobin.user'):
             return TemplateResponse('index.html')
-        return TemplateResponse('login.html')
+        return TemplateResponse('login.html', client_id=app.config['GITHUB_CLIENT_ID'])
 
     @app.before_request
     def before():
         redis_access_token_key = request.get_cookie("user_id", default=None,
                                                     secret=app.config['SECRET_KEY'])
         request.environ['kobin.user'] = redis_access_token_key
+
+    @app.after_request
+    def after(response):
+        if isinstance(response, HTTPError):
+            s = app.config['DB']['SESSION']
+            s.rollback()
+        return response

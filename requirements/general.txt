@@ -1,8 +1,7 @@
 kobin
 jinja2
-gunicorn
 requests
 redis
 SQLAlchemy
 beaker
-
+psycopg2

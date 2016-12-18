@@ -1,16 +1,19 @@
-FROM python:3.5-slim
+FROM python:3.6-rc-slim
 MAINTAINER Masashi Shibata <contact@c-bata.link>
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    git \
-  && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends git gcc libpq-dev && \
+    rm -rf /var/lib/apt/lists/*
 
-ADD . /code
-WORKDIR /code
-RUN pip install --upgrade pip setuptools
-RUN pip install -c ./requirements/constraints.txt -r ./requirements/general.txt
+RUN pip install --upgrade pip
+ADD requirements /app/requirements
+RUN pip install -c /app/requirements/constraints.txt -r /app/requirements/docker.txt
 
-EXPOSE 8080
-ENV KOBIN_SETTINGS_FILE=config/docker.py
-CMD ["gunicorn", "-w", "4", "manage:app"]
+ADD ./app /app/app
+ADD ./templates /app/templates
+ADD ./public /app/public
+ADD ./manage.py /app/manage.py
+ADD ./gunicorn_entrypoint.py /app/gunicorn_entrypoint.py
 
+WORKDIR /app
+EXPOSE 80
+CMD ["gunicorn", "-w", "1", "-b", ":80", "gunicorn_entrypoint:app"]

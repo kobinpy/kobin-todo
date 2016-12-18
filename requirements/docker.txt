@@ -1,0 +1,4 @@
+-r ./general.txt
+click
+gunicorn
+wsgi-static-middleware

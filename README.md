@@ -47,9 +47,30 @@ $ python manage.py run
 
 ## Docker
 
-**NOW, this cannot work in Docker. Help wanted.**
+Build a js and a css.
 
+```console
+$ mkdir -p public/static/js
+$ npm install
+$ npm run build
 ```
-$ docker build -t c-bata/kobin .
-$ docker run -d -p 80:8080 --name kobin c-bata/kobin
+Set Environment Variables.
+
+```sh
+export KOBIN_TODO_GITHUB_CLIENT_ID=xxxxxxxxxxxxxxxxxxxx
+export KOBIN_TODO_GITHUB_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+
+Run with Docker.
+
+```console
+$ docker-compose build
+$ docker-compose up -d
+$ docker-compose run web python manage.py migrate
+```
+
+Other:
+
+- bash: `docker-compose exec web /bin/bash`
+- logs: `docker-compose logs web`
+- psql: `psql -h localhost --user kobin kobintodo`
