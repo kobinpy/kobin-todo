@@ -37,5 +37,5 @@ elif ENV == 'docker':
     host = os.environ.get('KOBIN_TODO_DATABASE_HOST')
     user = os.environ.get('KOBIN_TODO_DATABASE_USER')
     password = os.environ.get('KOBIN_TODO_DATABASE_PASSWORD')
-    db = os.environ.get('KOBIN_TODO_DATABASE_DATABASE')
+    db = os.environ.get('KOBIN_TODO_DATABASE_NAME')
     SQLALCHEMY_DATABASE_URI = f'postgresql+psycopg2://{user}:{password}@{host}/{db}'
