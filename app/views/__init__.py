@@ -18,7 +18,7 @@ def setup_routing(app):
     def index():
         if request.environ.get('kobin.user'):
             return TemplateResponse('index.html')
-        return TemplateResponse('login.html')
+        return TemplateResponse('login.html', client_id=app.config['GITHUB_CLIENT_ID'])
 
     @app.before_request
     def before():
