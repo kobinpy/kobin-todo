@@ -4,4 +4,4 @@ requests
 redis
 SQLAlchemy
 beaker
-pymysql
+psycopg2

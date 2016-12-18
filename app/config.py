@@ -27,6 +27,7 @@ elif ENV == 'test':
 elif ENV == 'docker':
     DEBUG = False
     SECRET_KEY = os.environ.get('KOBIN_TODO_SECRET_KEY').encode('utf-8')
+
     REDIS_HOST = os.environ.get('KOBIN_TODO_REDIS_HOST')
     REDIS_PORT = os.environ.get('KOBIN_TODO_REDIS_PORT')
     REDIS_PASSWORD = os.environ.get('KOBIN_TODO_REDIS_PASSWORD')
@@ -35,5 +36,5 @@ elif ENV == 'docker':
     host = os.environ.get('KOBIN_TODO_DATABASE_HOST')
     user = os.environ.get('KOBIN_TODO_DATABASE_USER')
     password = os.environ.get('KOBIN_TODO_DATABASE_PASSWORD')
-    database = os.environ.get('KOBIN_TODO_DATABASE_DATABASE')
-    SQLALCHEMY_DATABASE_URI = f'mysql+pymysql://{user}:{password}@{host}/{database}'
+    db = os.environ.get('KOBIN_TODO_DATABASE_DATABASE')
+    SQLALCHEMY_DATABASE_URI = f'postgresql+psycopg2://{user}:{password}@{host}/{db}'

@@ -1,7 +1,7 @@
 FROM python:3.6-rc-slim
 MAINTAINER Masashi Shibata <contact@c-bata.link>
 
-RUN apt-get update && apt-get install -y --no-install-recommends git && \
+RUN apt-get update && apt-get install -y --no-install-recommends git gcc libpq-dev && \
     rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip
@@ -11,6 +11,7 @@ RUN pip install -c /app/requirements/constraints.txt -r /app/requirements/docker
 ADD ./app /app/app
 ADD ./templates /app/templates
 ADD ./public /app/public
+ADD ./manage.py /app/manage.py
 ADD ./gunicorn_entrypoint.py /app/gunicorn_entrypoint.py
 
 WORKDIR /app

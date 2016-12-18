@@ -47,15 +47,26 @@ $ python manage.py run
 
 ## Docker
 
+Build a js and a css.
+
 ```console
 $ mkdir -p public/static/js
 $ npm install
 $ npm run build
 ```
+Set Environment Variables.
+
+```sh
+export KOBIN_TODO_GITHUB_CLIENT_ID=xxxxxxxxxxxxxxxxxxxx
+export KOBIN_TODO_GITHUB_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+Run with Docker.
 
 ```console
 $ docker-compose build
 $ docker-compose up -d
+$ docker-compose run web python manage.py migrate
 ```
 
 Other:
