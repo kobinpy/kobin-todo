@@ -14,15 +14,18 @@ if ENV == 'develop':
     REDIS_DB = 0
     SQLALCHEMY_DATABASE_URI = 'sqlite:///db.sqlite3'
     DEBUG = True
+    SECRET_KEY = b'secretkey'
 elif ENV == 'test':
     REDIS_HOST = 'localhost'
     REDIS_PORT = 6379
     REDIS_DB = 0
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
     DEBUG = True
+    SECRET_KEY = b'secretkey'
 elif ENV == 'docker':
     REDIS_HOST = 'localhost'
     REDIS_PORT = 6379
     REDIS_DB = 0
     SQLALCHEMY_DATABASE_URI = 'sqlite:///db.sqlite3'
     DEBUG = False
+    SECRET_KEY = os.environ.get('KOBIN_TODO_SECRET_KEY').encode('utf-8')

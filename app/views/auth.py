@@ -1,4 +1,4 @@
-from kobin import request, RedirectResponse
+from kobin import request, RedirectResponse, current_config
 from datetime import timedelta
 
 from .. import app
@@ -27,7 +27,8 @@ def github_oauth_callback():
     r.set('access_token_{id}'.format(id=user.id), access_token)
     response = RedirectResponse(app.router.reverse('top'))
     response.set_cookie("user_id", f"access_token_{user.id}",
-                        max_age=timedelta(days=1), path='/')
+                        max_age=timedelta(days=1), path='/',
+                        secret=current_config()['SECRET_KEY'])
     return response
 
 

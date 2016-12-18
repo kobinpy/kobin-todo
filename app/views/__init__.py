@@ -22,5 +22,6 @@ def setup_routing(app):
 
     @app.before_request
     def before():
-        redis_access_token_key = request.get_cookie("user_id", default=None)
+        redis_access_token_key = request.get_cookie("user_id", default=None,
+                                                    secret=app.config['SECRET_KEY'])
         request.environ['kobin.user'] = redis_access_token_key
