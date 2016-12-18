@@ -47,9 +47,18 @@ $ python manage.py run
 
 ## Docker
 
-**NOW, this cannot work in Docker. Help wanted.**
+```console
+$ mkdir -p public/static/js
+$ npm install
+$ npm run build
+```
 
+```console
+$ docker-compose build
+$ docker-compose up -d
 ```
-$ docker build -t c-bata/kobin .
-$ docker run -d -p 80:8080 --name kobin c-bata/kobin
-```
+
+Other:
+
+- bash: `docker-compose exec web /bin/bash`
+- logs: `docker-compose logs web`

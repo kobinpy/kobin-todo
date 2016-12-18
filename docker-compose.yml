@@ -1,5 +1,37 @@
-redis:
-  image: redis
-  container_name: kobin_redis
-  ports:
-   - "6379:6379"
+version: '2'
+services:
+  web:
+    build:
+      context: .
+    environment:
+      - KOBIN_TODO_ENV=docker
+      - KOBIN_TODO_SECRET_KEY=secretkey
+      - KOBIN_TODO_REDIS_HOST=redis
+      - KOBIN_TODO_REDIS_PORT=6379
+      - KOBIN_TODO_REDIS_DB=0
+      - KOBIN_TODO_DATABASE_HOST=mysql
+      - KOBIN_TODO_DATABASE_USER=kobin
+      - KOBIN_TODO_DATABASE_PASSWORD=password
+      - KOBIN_TODO_DATABASE_DATABASE=kobintodo
+      - KOBIN_TODO_GITHUB_CLIENT_ID
+      - KOBIN_TODO_GITHUB_CLIENT_SECRET
+    links:
+      - mysql
+      - redis
+    ports:
+      - 8000:80
+  mysql:
+    image: mysql:latest
+    container_name: kobin_mysql
+    environment:
+      - MYSQL_USER=kobin
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=kobintodo
+    ports:
+      - "3306:3306"
+  redis:
+    image: redis:latest
+    container_name: kobin_redis
+    ports:
+      - "6379:6379"
