@@ -73,3 +73,4 @@ Other:
 
 - bash: `docker-compose exec web /bin/bash`
 - logs: `docker-compose logs web`
+- psql: `psql -h localhost --user kobin kobintodo`

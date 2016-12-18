@@ -12,14 +12,15 @@ if ENV == 'develop':
     REDIS_HOST = 'localhost'
     REDIS_PORT = 6379
     REDIS_DB = 0
-    REDIS_PASSWORD = None
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///db.sqlite3'
+    REDIS_PASSWORD = 'password'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kobin:password@localhost/kobintodo'
     DEBUG = True
     SECRET_KEY = b'secretkey'
 elif ENV == 'test':
     REDIS_HOST = 'localhost'
     REDIS_PORT = 6379
     REDIS_DB = 0
+    REDIS_PASSWORD = 'password'
     REDIS_PASSWORD = None
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
     DEBUG = True
