@@ -1,9 +1,9 @@
 version: '2'
 services:
-  web:
-    container_name: kobin_web
+  server:
+    container_name: kobin_server
     build:
-      context: .
+      context: ./server
     environment:
       - KOBIN_TODO_ENV=docker
       - KOBIN_TODO_SECRET_KEY=secretkey
@@ -20,11 +20,16 @@ services:
 
       - KOBIN_TODO_GITHUB_CLIENT_ID
       - KOBIN_TODO_GITHUB_CLIENT_SECRET
-    volumes:
-      - /app/public
     links:
       - postgres
       - redis
+
+  front:
+    container_name: kobin_front
+    build:
+      context: ./front
+    volumes:
+      - ./front/public:/usr/src/public
 
   nginx:
     image: nginx
@@ -34,9 +39,9 @@ services:
     ports:
       - "8080:80"
     volumes_from:
-      - web
+      - server
     links:
-      - web
+      - server
 
   postgres:
     image: postgres:latest
