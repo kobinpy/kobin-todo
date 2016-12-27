@@ -66,7 +66,7 @@ Run with Docker.
 ```console
 $ docker-compose build
 $ docker-compose up -d
-$ docker-compose run web python manage.py migrate
+$ docker-compose run server python manage.py migrate
 ```
 
 Other:

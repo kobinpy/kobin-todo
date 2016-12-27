@@ -30,6 +30,7 @@ services:
       context: ./front
     volumes:
       - ./front/public:/usr/src/public
+      - /usr/src/public
 
   nginx:
     image: nginx
@@ -39,7 +40,7 @@ services:
     ports:
       - "8080:80"
     volumes_from:
-      - server
+      - front
     links:
       - server
 

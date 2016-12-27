@@ -18,5 +18,3 @@ RUN npm run build
 
 # Shared folder should enable after npm build.
 VOLUME /usr/src/public
-EXPOSE 80
-ENTRYPOINT ["python", "-m", "SimpleHTTPServer", "80"]
