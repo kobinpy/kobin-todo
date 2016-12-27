@@ -46,23 +46,23 @@ $ npm install
 $ npm run build
 ```
 
-Setup python interpreter
-
-```console
-$ python3.6 -m venv venv
-$ source venv/bin/activate
-$ pip install -r requirements.txt
-$ python manage.py migrate
-```
-
 Run redis and postgresql
 
 ```console
 $ docker-compose up -d redis postgres
 ```
 
+Setup python interpreter
+
+```console
+$ python3.6 -m venv venv
+$ source venv/bin/activate
+$ pip install -c requirements/constraints.txt -r requirements/general.txt -r requirements.dev.txt
+$ python manage.py migrate
+```
+
 Run
 
-```
+```console
 $ python manage.py run
 ```
