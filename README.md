@@ -1,6 +1,6 @@
-# kobin-example
+# kobin-todo
 
-Example application in Kobin python web-framework.
+Todo application using Kobin.
 
 ![animation](./anim.gif)
 
