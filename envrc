@@ -1,3 +1,7 @@
 export KOBIN_TODO_ENV=develop
+export REDIS_PASSWORD=password
+export POSTGRES_PASSWORD=password
+export SECRET_KEY=secret
+
 export KOBIN_TODO_GITHUB_CLIENT_ID=xxxxxxxxxxxxxxxxxxxx
 export KOBIN_TODO_GITHUB_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
