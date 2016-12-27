@@ -1,0 +1,9 @@
+### node
+node_modules/
+public/
+ts/*.js
+*.js.map
+npm-debug.log
+
+### Scss
+.sass-cache

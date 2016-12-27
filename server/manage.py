@@ -25,7 +25,7 @@ def run():
     subprocess.call(['wsgicli', 'run', 'app/__init__.py', 'app',
                      '-p', '8080', '--reload',
                      '--static', '--static-root', '/static/',
-                     '--static-dirs', './public/static/'])
+                     '--static-dirs', './public/'])
 
 
 @cli.command()

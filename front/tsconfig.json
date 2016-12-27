@@ -12,6 +12,6 @@
     "node_modules"
   ],
   "files": [
-    "./static/ts/main.ts"
+    "./ts/main.ts"
   ]
 }

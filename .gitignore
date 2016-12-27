@@ -1,35 +1,12 @@
-### Python template
-
-__pycache__/
-venv/
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*,cover
-
 ### IntelliJ IDEA
 .idea/
-
-### node
-node_modules/
-public/
-static/ts/*.js
-*.js.map
-npm-debug.log
-
-### Scss
-.sass-cache
 
 ### DB
 db.sqlite3
 db.sqlite3.*
+
+### sandbox
+sandbox/
+
+### direnv
+.envrc
