@@ -23,6 +23,10 @@ services:
     links:
       - postgres
       - redis
+    ports:
+      - "8080:80"
+    volumes_from:
+      - front
 
   front:
     container_name: kobin_front
@@ -31,18 +35,6 @@ services:
     volumes:
       - ./front/public:/usr/src/public
       - /usr/src/public
-
-  nginx:
-    image: nginx
-    container_name: kobin_nginx
-    volumes:
-      - ./nginx/kobin-todo.conf:/etc/nginx/conf.d/default.conf
-    ports:
-      - "8080:80"
-    volumes_from:
-      - front
-    links:
-      - server
 
   postgres:
     image: postgres:latest

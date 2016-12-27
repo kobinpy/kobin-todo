@@ -24,7 +24,7 @@ $ docker-compose run server python manage.py migrate
 Other:
 
 - bash: `docker-compose exec server /bin/bash`
-- logs: `docker-compose logs server`
+- logs: `docker-compose logs -f server`
 - psql: `psql -h localhost --user kobin kobintodo`
 
 

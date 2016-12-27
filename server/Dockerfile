@@ -13,7 +13,8 @@ RUN pip install \
 ADD ./app /usr/src/app
 ADD ./templates /usr/src/templates
 ADD ./manage.py /usr/src/manage.py
+ADD ./gunicorn_entrypoint.py /usr/src/gunicorn_entrypoint.py
 
 WORKDIR /usr/src
 EXPOSE 80
-CMD ["gunicorn", "-w", "1", "-b", ":80", "app:app"]
+CMD ["gunicorn", "-w", "1", "-b", ":80", "gunicorn_entrypoint:app"]
