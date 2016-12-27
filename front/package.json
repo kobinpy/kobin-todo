@@ -1,7 +1,7 @@
 {
   "name": "kobin-todo",
   "version": "0.0.1",
-  "description": "TODO application in Kobin python web-framework.",
+  "description": "Todo application in Kobin python web-framework.",
   "scripts": {
     "dir": "mkdir -p ./public/img ./public/js ./public/css",
     "tsc": "tsc -p .",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/c-bata/kobin-example.git"
+    "url": "git+https://github.com/c-bata/kobin-todo.git"
   },
   "keywords": [],
   "author": "c-bata",
