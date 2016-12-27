@@ -20,11 +20,24 @@ services:
 
       - KOBIN_TODO_GITHUB_CLIENT_ID
       - KOBIN_TODO_GITHUB_CLIENT_SECRET
+    volumes:
+      - /app/public
     links:
       - postgres
       - redis
+
+  nginx:
+    image: nginx
+    container_name: kobin_nginx
+    volumes:
+      - ./nginx/kobin-todo.conf:/etc/nginx/conf.d/default.conf
     ports:
       - "8080:80"
+    volumes_from:
+      - web
+    links:
+      - web
+
   postgres:
     image: postgres:latest
     container_name: kobin_postgres
@@ -34,6 +47,7 @@ services:
       - POSTGRES_DB=kobintodo
     ports:
       - "5432:5432"
+
   redis:
     image: redis:latest
     container_name: kobin_redis

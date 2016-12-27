@@ -12,8 +12,7 @@ ADD ./app /app/app
 ADD ./templates /app/templates
 ADD ./public /app/public
 ADD ./manage.py /app/manage.py
-ADD ./gunicorn_entrypoint.py /app/gunicorn_entrypoint.py
 
 WORKDIR /app
 EXPOSE 80
-CMD ["gunicorn", "-w", "1", "-b", ":80", "gunicorn_entrypoint:app"]
+CMD ["gunicorn", "-w", "1", "-b", ":80", "app:app"]
