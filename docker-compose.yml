@@ -25,6 +25,7 @@ services:
       - "8080:80"
     volumes_from:
       - front
+    command: gunicorn -w 1 -b :80 --reload --log-level debug gunicorn_entrypoint:app
 
   front:
     container_name: kobin_front

@@ -1,4 +1,4 @@
-FROM python:3.6-rc-slim
+FROM python:3.6-slim
 MAINTAINER Masashi Shibata <contact@c-bata.link>
 
 RUN apt-get update && apt-get install -y --no-install-recommends git gcc libpq-dev && \
