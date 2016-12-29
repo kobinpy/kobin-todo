@@ -1,11 +1,29 @@
+from coreapi.codecs import JSONCodec
 from kobin import request, Response, JSONResponse, HTTPError
+from kobin.environs import accept_best_match
+from openapi_codec import OpenAPICodec
 
+from ..coreapi_docs import tasks as task_coreapi
 from ..service import task as task_service
+
+json_codec = JSONCodec()
+openapi_codec = OpenAPICodec()
+mimetypes = json_codec.get_media_types() + \
+            openapi_codec.get_media_types()
 
 
 def task_list():
-    tasks = [t.serialize for t in task_service.retrieve_tasks()]
-    return JSONResponse({'tasks': tasks})
+    mimetype = accept_best_match(request.headers['ACCEPT'], mimetypes)
+    tasks_document = task_coreapi.tasks_document()
+    if mimetype in openapi_codec.get_media_types():
+        content = openapi_codec.encode(tasks_document)
+        response = Response(content)
+    else:
+        tasks = [t.serialize for t in task_service.retrieve_tasks()]
+        response = JSONResponse({'tasks': tasks})
+        mimetype = 'application/json'
+    response.headers.add_header('Content-Type', mimetype)
+    return response
 
 
 def create_task():

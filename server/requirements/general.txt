@@ -4,3 +4,6 @@ requests
 redis
 SQLAlchemy
 psycopg2
+coreapi
+jsonhyperschema-codec
+openapi-codec
