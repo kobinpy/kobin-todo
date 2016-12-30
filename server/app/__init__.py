@@ -1,10 +1,7 @@
 import os
-from kobin import Kobin
-from . import models, views
+from kobin import Kobin, load_config_from_pyfile
+from . import views
 
-app = Kobin()
-app.config.load_from_pyfile(os.environ.get('KOBIN_SETTINGS_FILE', 'app/config.py'))
-
-models.setup_models(app)
-models.setup_redis(app)
+config = load_config_from_pyfile(os.environ.get('KOBIN_SETTINGS_FILE', 'app/config.py'))
+app = Kobin(config=config)
 views.setup_routing(app)

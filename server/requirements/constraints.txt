@@ -6,7 +6,7 @@ flake8==3.2.1
 ipython==5.1.0
 ipython-genutils==0.1.0
 Jinja2==2.8
-kobin==0.1.2
+kobin==0.1.3
 MarkupSafe==0.23
 mccabe==0.5.3
 pexpect==4.2.1

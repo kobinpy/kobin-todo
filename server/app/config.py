@@ -1,13 +1,21 @@
 import os
+import redis
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
 
-ENV = os.getenv('KOBIN_TODO_ENV', 'develop')
+ENV = os.getenv('KOBIN_TODO_ENV')
 
 BASE_DIR = os.path.dirname(os.path.abspath(__name__))
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
+# Github
+# ======
 GITHUB_CLIENT_ID = os.environ.get('KOBIN_TODO_GITHUB_CLIENT_ID')
 GITHUB_CLIENT_SECRET = os.environ.get('KOBIN_TODO_GITHUB_CLIENT_SECRET')
 
+
+# Database
+# ========
 if ENV == 'develop':
     REDIS_HOST = 'localhost'
     REDIS_PORT = 6379
@@ -25,7 +33,7 @@ elif ENV == 'test':
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
     DEBUG = True
     SECRET_KEY = b'secretkey'
-elif ENV == 'docker':
+else:
     DEBUG = False
     SECRET_KEY = os.environ.get('SECRET_KEY').encode('utf-8')
 
@@ -39,3 +47,17 @@ elif ENV == 'docker':
     password = os.environ.get('POSTGRES_PASSWORD')
     db = os.environ.get('POSTGRES_NAME')
     SQLALCHEMY_DATABASE_URI = f'postgresql+psycopg2://{user}:{password}@{host}/{db}'
+
+# SQLAlchemy
+ENGINE = create_engine(SQLALCHEMY_DATABASE_URI, echo=True)
+s = sessionmaker()
+s.configure(bind=ENGINE)
+SESSION = s()
+
+# for Redis
+REDIS = redis.StrictRedis(
+    host=REDIS_HOST,
+    port=REDIS_PORT,
+    db=REDIS_DB,
+    password=REDIS_PASSWORD,
+)

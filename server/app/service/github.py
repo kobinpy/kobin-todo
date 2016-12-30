@@ -8,7 +8,7 @@ from .. import app, models
 
 def get_or_create_user(nickname: str, name: str, auth_service: str, avatar_url: str,
                        auth_service_id: int, email: str) -> models.User:
-    session = app.config["DB"]["SESSION"]
+    session = app.config["SESSION"]
     user = session.query(models.User).filter_by(
         auth_service=auth_service, auth_service_id=auth_service_id
     ).first()
@@ -29,7 +29,7 @@ def get_or_create_user(nickname: str, name: str, auth_service: str, avatar_url: 
 
 def current_user() -> models.User:
     user_id = int(request.environ['kobin.user'].split('_')[-1])
-    session = app.config["DB"]["SESSION"]
+    session = app.config["SESSION"]
     return session.query(models.User).get(user_id)
 
 
