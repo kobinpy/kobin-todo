@@ -49,10 +49,10 @@ else:
     SQLALCHEMY_DATABASE_URI = f'postgresql+psycopg2://{user}:{password}@{host}/{db}'
 
 # SQLAlchemy
-ENGINE = create_engine(SQLALCHEMY_DATABASE_URI, echo=True)
-s = sessionmaker()
-s.configure(bind=ENGINE)
-SESSION = s()
+Session = sessionmaker()
+SQLALCHEMY_ENGINE = create_engine(SQLALCHEMY_DATABASE_URI, echo=True)
+Session.configure(bind=SQLALCHEMY_ENGINE)
+SQLALCHEMY_SESSION = Session()
 
 # for Redis
 REDIS = redis.StrictRedis(

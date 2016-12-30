@@ -14,8 +14,9 @@ def cli():
 @cli.command()
 def migrate():
     """Runs database migrations."""
-    metadata = app.config["DB"].get("METADATA")
-    engine = app.config["DB"].get("ENGINE")
+    from app.models import Base
+    metadata = Base.metadata
+    engine = app.config.get("SQLALCHEMY_ENGINE")
     metadata.create_all(engine)
 
 
